@@ -35,6 +35,7 @@ import com.starrocks.connector.hudi.HudiMetadata;
 import com.starrocks.connector.iceberg.IcebergMetaSpec;
 import com.starrocks.connector.iceberg.IcebergMetadata;
 import com.starrocks.connector.kudu.KuduMetadata;
+import com.starrocks.connector.paimon.PaimonMetadata;
 import com.starrocks.credential.CloudConfiguration;
 import com.starrocks.credential.CloudType;
 import com.starrocks.sql.ast.CreateTableStmt;
@@ -51,6 +52,7 @@ import static com.starrocks.catalog.Table.TableType.HIVE;
 import static com.starrocks.catalog.Table.TableType.HUDI;
 import static com.starrocks.catalog.Table.TableType.ICEBERG;
 import static com.starrocks.catalog.Table.TableType.KUDU;
+import static com.starrocks.catalog.Table.TableType.PAIMON;
 import static com.starrocks.connector.unified.UnifiedMetadata.DELTA_LAKE_PROVIDER;
 import static com.starrocks.connector.unified.UnifiedMetadata.ICEBERG_TABLE_TYPE_NAME;
 import static com.starrocks.connector.unified.UnifiedMetadata.ICEBERG_TABLE_TYPE_VALUE;
@@ -63,6 +65,7 @@ public class UnifiedMetadataTest {
     @Mocked private IcebergMetadata icebergMetadata;
     @Mocked private HudiMetadata hudiMetadata;
     @Mocked private DeltaLakeMetadata deltaLakeMetadata;
+    @Mocked private PaimonMetadata paimonMetadata;
     @Mocked private KuduMetadata kuduMetadata;
     private final CreateTableStmt createTableStmt = new CreateTableStmt(false, true,
             new TableName("test_db", "test_tbl"), ImmutableList.of(), "hive",
@@ -77,6 +80,7 @@ public class UnifiedMetadataTest {
             ICEBERG, icebergMetadata,
             HUDI, hudiMetadata,
             DELTALAKE, deltaLakeMetadata,
+            PAIMON, paimonMetadata,
             KUDU, kuduMetadata
         )
         );
